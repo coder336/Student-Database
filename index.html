@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Student Management System</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Soutik Gayen">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready( () => {
+                $('#Studentdetails').click( () => {
+                    $.getJSON("/api/students/"+$('#roll').val(), (result,status) => {
+                        $("#result").empty();
+                        /*$.each(result, function(i, field){
+                            $("#result").append(field + " ");
+                        */
+                       for(const prop in result)
+                       {
+                            $('#result').append(prop + " : " + result[prop] + '<br>');
+                       }
+                            //});
+                    });
+                });
+            });
+        </script>
+        
+    </head>
+    <body>
+        <header>Student Data Management</header>
+        <div>
+            <label for="rollno">Enter Student Roll No : </label><br>
+            <input type="text" id="roll">
+            <button id="Studentdetails">Submit</button>
+        </div>
+        <div id="result">Result will be updated....</div>
+        
+    </body>
+</html>
