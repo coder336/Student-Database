@@ -1,0 +1,34 @@
+<div>
+    <label for="rollno">Student Roll No : </label><br><br>
+    <input id="stu_roll" type="text"><br><br>
+    <label for="name">Student Name: </label><br><br>
+    <input id="stu_name" type="text"><br><br>
+    <label for="address">Student Address : </label><br><br>
+    <input id="stu_add" type="text"><br><br>
+    <label for="contactno">Student Contact Number : </label><br><br>
+    <input id="stu_num" type="text"><br><br>
+    <button id="Studentdetails">Submit</button>
+</div>
+<div id = "result"></div>
+<script>
+    $(document).ready( () => {
+        $('#Studentdetails').click( () => {
+            let str = "/update/" + $('#stu_roll').val();
+            let obj = JSON.stringify({
+                "Name" : $('#stu_name').val(),
+                "Address" : $('#stu_add').val(),
+                "ContactNo" : $('#stu_num').val(),
+            });
+            $.ajax({
+                url: str,
+                type : "PUT",
+                data: obj,
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                success: (result) => {
+                    $('#result').html(result.status);
+                }
+            });
+        });
+    });
+</script>

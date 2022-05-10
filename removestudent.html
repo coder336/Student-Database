@@ -1,0 +1,20 @@
+<div>
+    <label for="rollno">Enter Student Roll No : </label><br>
+    <input id="rollnumber" type="text">
+    <button id="Studentdetails">Submit</button>
+</div>
+<div id="result"></div>
+<script>
+    $(document).ready( () => {
+        $('#Studentdetails').click( () => {
+            let str = "/delete/"+$('#rollnumber').val();
+            $.ajax({
+                url: str,
+                type: 'DELETE',
+                success: (result) => {
+                    $('#result').html(result.status);
+                }
+            });
+        });
+    });
+</script>
