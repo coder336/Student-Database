@@ -1,0 +1,16 @@
+<div id="result"></div>
+<script>
+    $(document).ready( () => {
+        $.getJSON('/all/contents', (result,status) => {
+            let str="";
+            //console.log(result);
+            for(const el in result)
+            {
+                for(const prop in result[el])
+                    str+=prop + " : " + result[el][prop]+"<br>";
+                str += "<br>";
+            }
+            $('#result').html(str);
+        });
+    });
+</script>

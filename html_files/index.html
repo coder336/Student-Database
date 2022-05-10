@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Student Management System</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Soutik Gayen">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1 class = "logo"></h1>
+                <ul>
+                    <li><a id = "all" href="#content">All Students</a></li>
+                    <li><a id = "roll" href="#content">Student Info</a></li>
+                    <li><a id = "add" href="#content">New Student</a></li>
+                    <li><a id = "update" href="#content">Update Student Info</a></li>
+                    <li><a id = "remove" href="#content">Remove Student</a></li>
+                </ul>
+            </div>
+            <script>
+                $(document).ready( () => {
+                    $('#all').click( () => {
+                        $.get("all", (data, status) => {
+                            $("#content").empty();
+                            $("#content").append(data);
+                        })
+                    });
+                    $('#roll').click( () => {
+                        $.get("roll", (data, status) => {
+                            $("#content").empty();
+                            $("#content").append(data);
+                        })
+                    });
+                    $('#add').click( () => {
+                        $.get("add", (data, status) => {
+                            $("#content").empty();
+                            $("#content").append(data);
+                        })
+                    });
+                    $('#update').click( () => {
+                        $.get("update", (data, status) => {
+                            $("#content").empty();
+                            $("#content").append(data);
+                        })
+                    });
+                    $('#remove').click( () => {
+                        $.get("remove", (data, status) => {
+                            $("#content").empty();
+                            $("#content").append(data);
+                        })
+                    });
+                });
+            </script>
+            <div id = "content">This is the home page</div>
+        </header>
+    </body>
+</html>
+
+

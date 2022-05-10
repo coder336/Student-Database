@@ -1,0 +1,21 @@
+<div>
+    <label for="rollno">Enter Student Roll No : </label><br>
+    <input id="rollnumber" type="text">
+    <button id="Studentdetails">Submit</button>
+</div>
+<div id="result"></div>
+<script>
+    $(document).ready( () => {
+        $('#Studentdetails').click( () => {
+            let str = "/roll/"+$('#rollnumber').val();
+            $.getJSON(str, (result,status) => {
+                let str="";
+                for(const prop in result)
+                {
+                    str+=prop + " : " + result[prop]+"<br>";
+                }
+                $('#result').html(str);
+            });
+        });
+    });
+</script>

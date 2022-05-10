@@ -1,0 +1,39 @@
+<div>
+    <label for="rollno">Student Roll No : </label><br><br>
+    <input id="stu_roll" type="text"><br><br>
+    <label for="name">Student Name: </label><br><br>
+    <input id="stu_name" type="text"><br><br>
+    <label for="address">Student Address : </label><br><br>
+    <input id="stu_add" type="text"><br><br>
+    <label for="contactno">Student Contact Number : </label><br><br>
+    <input id="stu_num" type="text"><br><br>
+    <button id="Studentdetails">Submit</button>
+</div>
+<div id = "result"></div>
+<script>
+    $(document).ready( () => {
+        $('#Studentdetails').click( () => {
+            let str = "/add/student";
+            let obj = JSON.stringify({
+                "RollNo" : $('#stu_roll').val(),
+                "Name" : $('#stu_name').val(),
+                "Address" : $('#stu_add').val(),
+                "ContactNo" : $('#stu_num').val(),
+            });
+            console.log(obj);
+            $.ajax({
+                url: str,
+                type : "POST",
+                data: obj,
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                success : (result) => {
+                    let str="Student Added:<br>";
+                    for(const prop in result.data)
+                        str+=prop + " : " + result.data[prop]+"<br>";
+                    $('#result').html(str);
+                }
+            });
+        });
+    });
+</script>
